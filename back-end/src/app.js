@@ -5,7 +5,7 @@ const clothingRouter = require("./routers/clothing-router");
 const weatherRouter = require("./routers/weather-router");
 require("./db/connect");
 
-const port = 3000;
+const port = 4000;
 const app = express();
 
 app.use(express.json());
