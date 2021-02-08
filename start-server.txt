@@ -1,0 +1,18 @@
+1.) If given problems run killall node then restart server by cd'ing into back end
+and running "npm run dev"
+
+2.) If not sure if mongo is running type "sudo mongo" and input password. If you see
+shell then it is running, you can also try connnecting to it from mongo compass and see
+if that works
+
+3.) *most ports are of type tcp some are udp but unusual
+sudo lsof -i tcp:3000
+//what is listening on port 3000
+
+lsof -nP +c 15 | grep LISTEN
+//what is listening on all ports (doesn't include mongo but default uses
+port 27017)
+
+sudo lsof -iTCP -sTCP:LISTEN | grep mongo
+//this is the port that mongo is listening to, but usually, as stated above, it
+runs on port 27017
