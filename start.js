@@ -12,6 +12,7 @@ const startUp = async () => {
     await kill(4000, "tcp");
     await kill(3000, "tcp");
     await concurrently([
+      'killall node',
       "sudo mongod --dbpath '/Users/gavinfogel/Mongo/data/db'",
       "cd back-end && npm run dev",
       "cd front-end && cd clothing && yarn start",
@@ -20,6 +21,7 @@ const startUp = async () => {
     await kill(4000, "tcp");
     await kill(3000, "tcp");
     await concurrently([
+      'killall node',
       "cd back-end && npm run dev",
       "cd front-end && cd clothing && yarn start",
     ]);

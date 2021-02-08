@@ -36,7 +36,7 @@ router.get("/users/:id", async (req, res) => {
 });
 
 /*Posts a user with sent body to database and also returns the user that was added*/
-router.post("/users", async (req, res) => {
+router.post("/users/register", async (req, res) => {
   try {
     const user = new User(req.body);
     const userSaved = await user.save();
