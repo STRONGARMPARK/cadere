@@ -1,7 +1,5 @@
 //sudo mongod --dbpath 'Users/armstrongpark/Desktop/Mongo/data/db'
-const request = require("request-promise");
 const express = require("express");
-const cors = require("cors");
 const userRouter = require("./routers/user-router");
 const clothingRouter = require("./routers/clothing-router");
 const weatherRouter = require("./routers/weather-router");
