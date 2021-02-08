@@ -2,6 +2,16 @@ const express = require("express");
 const User = require("../models/User");
 const router = new express.Router();
 
+router.post("/users/login", async (req, res) => {
+  try {
+    const vUser = await User.verifiedUser(req.body.username, req.body.password);
+    res.send(vUser);
+  } catch (e) {
+    res.status(500).send("Error occured during authentication");
+    console.log(e);
+  }
+});
+
 /*Return all users, gives 500 status if doesn't work*/
 router.get("/users", async (req, res) => {
   try {

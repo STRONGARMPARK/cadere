@@ -31,6 +31,18 @@ const schema = new mongoose.Schema({
   },
 });
 
+schema.statics.verifiedUser = async (username, password) => {
+  const existUser = await User.findOne({ username: username });
+  if (existUser === null) {
+    throw new Error("There is no user with that username");
+  }
+  const verified = await bcrypt.compare(password, existUser.password);
+  if (!verified) {
+    throw new Error("Incorrect Password");
+  }
+  return existUser;
+};
+
 schema.pre("save", async function (finished) {
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 7);
