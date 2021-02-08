@@ -1,5 +1,13 @@
 {
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "mongostart": "sudo mongod --dbpath '/Users/armstrongpark/Desktop/MONGO/data/db'",
+    "megastart": "concurrently \"sudo mongod --dbpath '/Users/armstrongpark/Desktop/MONGO/data/db'\" \"nodemon back-end/src/app.js\""
+  },
   "dependencies": {
+    "concurrently": "^5.3.0",
+    "kill-port": "^1.6.1",
     "react": "^17.0.1"
   }
 }
