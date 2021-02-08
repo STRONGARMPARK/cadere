@@ -39,8 +39,8 @@ router.post("/clothing", async (req, res) => {
 /*delete certain clothing by id*/
 router.delete("/clothing/:id", async (req, res) => {
   try {
-    const deletedclothing = await Clothing.findByIdAndDelete(req.params.id);
-    res.send(deletedclothing);
+    const deletedClothing = await Clothing.findByIdAndDelete(req.params.id);
+    res.send(deletedClothing);
   } catch (e) {
     res.status(500).send();
   }
