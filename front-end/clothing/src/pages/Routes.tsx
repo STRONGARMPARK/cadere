@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ApplicationView } from '../components/ApplicationView';
 import { Help } from './Help';
 import { Home } from './Home';
 import { Inventory } from './Inventory';
@@ -15,12 +16,14 @@ export const Routes: React.FC<RoutesProps> = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/help">
-          <Help />
-        </Route>
-        <Route path="/inventory">
-          <Inventory />
-        </Route>
+        <ApplicationView>
+          <Route path="/help">
+            <Help />
+          </Route>
+          <Route path="/inventory">
+            <Inventory />
+          </Route>
+        </ApplicationView>
       </Switch>
     </Router>
   );
