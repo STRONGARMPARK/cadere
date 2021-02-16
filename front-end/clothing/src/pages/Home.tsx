@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useGetClothes } from '../api/useClothing';
+import React from 'react'
 
 interface HomeProps {}
 

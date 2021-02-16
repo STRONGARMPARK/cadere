@@ -12,8 +12,8 @@ export function useGetClothes() {
 }
 
 //Posts new item of clothes
-export function usePostClothes(name: string,) {
-  return useFetch(fetchTypes.POST, url)
+export function usePostClothes(name: string) {
+  return useFetch(fetchTypes.POST, url);
 }
 
 //Gets a clothing item by ID

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useGetClothes } from '../api/useClothing';
+import { useGetClothes, usePostClothes } from '../api/useClothing';
 import { Button } from '../components/Button';
 
 interface InventoryProps {
@@ -7,21 +7,37 @@ interface InventoryProps {
 }
 
 export const Inventory: React.FC<InventoryProps> = () => {
-  const [clothes, setClothes] = useState<any[]>();
-  const { data, loading, error } = useGetClothes();
+  const [clothingName, setClothingName] = useState<string>("");
 
+
+  const [clothes, setClothes] = useState<any[]>([]);
+  const { data, loading } = useGetClothes();
   useEffect(() => {
     setClothes(data);
-    console.log(data);
   }, [data])
+
+  const clothingItems = clothes.map((clothingItem) => (
+    <li key={clothingItem._id}>{clothingItem.name}</li>
+  ));
+
+  // setClothes(usePostClothes(clothingName).data);
+
+  const HandleClick = () => {
+    setClothingName("");
+  }
 
   return (
     <div>
       <p>Inventory</p>
-      <Button onClick={() => {}}>
+      <Button onClick={HandleClick}>
         Add Item
       </Button>
-      <input placeholder="Name" type="text" />
-    </div>
+      {loading ? <Button onClick={() => {}}>LOADING</Button> : clothingItems}
+      < input
+        placeholder="Name"
+        value={clothingName}
+        type="text"
+        onChange={e => setClothingName(e.target.value)} />
+    </div >
   );
 }

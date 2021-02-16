@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react'
 import { fetchTypes } from "./constants";
+// Currently set initial data as an empty list, which could either be replaced
+// with a list or with other data. This is so when you render a list of the 
+// data, during the time it is null, it will not give you an error when trying
+// to map a list.
 
+/**
+ * Write documentation here
+ */
 export function useFetch(type: fetchTypes, url: string, body?: object) {
-  const [data, setData] = useState<any>(true);
+  const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,8 +40,7 @@ export function useFetch(type: fetchTypes, url: string, body?: object) {
     }
 
     fetchData();
-    console.log(data);
-  }, [url, type, body, data])
+  }, [body, type, url])
 
   return { data, loading, error }
 }

@@ -1,21 +1,36 @@
 import React from "react";
-// import logo from './logo.svg';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import "./App.css";
+import { MainView } from "./components/MainView";
+import { SideBar } from "./components/SideBar";
+import { Routes } from "./pages/Routes";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { ApplicationView } from "./components/ApplicationView";
+import { Help } from "./pages/Help";
+import { Inventory } from "./pages/Inventory";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Link to="/help">Go to help</Link>
-        </Route>
-        <Route path="/help">
-          <Link to="/">Go to home page</Link>
-        </Route>
-      </Switch>
-    </Router>
+    <MainView>
+      <Router>
+
+        <SideBar />
+
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <ApplicationView>
+            <Route path="/help">
+              <Help />
+            </Route>
+            <Route path="/inventory">
+              <Inventory />
+            </Route>
+          </ApplicationView>
+        </Switch>
+
+      </Router>
+    </MainView>
   );
 }
 
