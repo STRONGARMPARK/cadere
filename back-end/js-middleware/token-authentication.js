@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../src/models/User");
-const middleFunction = async (req, res, finished) => {
+const authentication = async (req, res, finished) => {
   try {
     const userToken = req.header("token");
     const verified = jwt.verify(userToken, "randomsecret");
@@ -21,4 +21,4 @@ const middleFunction = async (req, res, finished) => {
   }
 };
 
-module.exports = middleFunction;
+module.exports = authentication;
